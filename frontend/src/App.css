@@ -1,0 +1,8 @@
+/* Basic layout + reset */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { background:#111; color:#fff; font-family: Inter, system-ui, Arial; }
+a { color: inherit; text-decoration: none; }
+
+.app { min-height:100%; display:flex; flex-direction:column; }
+.page { flex:1; }

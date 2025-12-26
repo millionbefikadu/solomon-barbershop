@@ -1,0 +1,246 @@
+/* src/pages/Home.css */
+:root {
+  --bg: #111111;
+  --text: #ffffff;
+  --muted: #c7c7c7;
+  --gold: #c59d5f;
+  --card: #1a1a1a;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; background: var(--bg); color: var(--text); }
+a { color: var(--text); text-decoration: none; }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 72vh;            /* shorter hero for balance */
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.75));
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 850px;
+  padding: 0 24px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+.hero p {
+  color: var(--muted);
+  font-size: clamp(16px, 2.4vw, 20px);
+  margin-bottom: 24px;
+}
+/* --- Asmarina full hero (unchanged base) --- */
+.asmara-hero{
+  position:relative; min-height:100vh; background-size:cover; background-position:center;
+  display:grid; place-items:center; border-top:1px solid rgba(255,255,255,.05);
+  opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;
+}
+.asmara-hero.in { opacity:1; transform:translateY(0); }
+
+/* gold-tint overlay */
+.asmara-hero .overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(28,22,10,.35), rgba(0,0,0,.78)), /* gold-ish */
+    radial-gradient(60% 60% at 50% 20%, rgba(212,175,55,.12), transparent 60%);
+}
+
+/* optional subtle parallax on scroll */
+.asmara-hero.parallax { background-attachment: fixed; }
+
+.asmara-content{ position:relative; text-align:center; max-width:850px; padding:0 24px; }
+.asmara-content h2{ font-size:clamp(36px,6vw,60px); margin:0 0 12px; color:var(--gold); }
+.asmara-content p{ color:var(--muted); font-size:clamp(16px,2.4vw,20px); margin-bottom:24px; }
+.asmara-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+@media (max-width: 640px){
+  .asmara-hero{ min-height:80vh; }
+}
+
+.asmara-content {
+  position: relative;
+  text-align: center;
+  max-width: 850px;
+  padding: 0 24px;
+}
+
+.asmara-content h2 {
+  font-size: clamp(36px, 6vw, 60px);
+  line-height: 1.05;
+  margin: 0 0 12px;
+  color: var(--gold);
+}
+
+.asmara-content p {
+  color: var(--muted);
+  font-size: clamp(16px, 2.4vw, 20px);
+  margin-bottom: 24px;
+}
+
+.asmara-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* small screens */
+@media (max-width: 640px) {
+  .asmara-hero { min-height: 80vh; }
+  .asmara-content h2 { font-size: 30px; }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, opacity .2s ease, border-color .2s ease;
+}
+.btn.primary { background: var(--gold); color: #111; }
+.btn.ghost { border: 1px solid rgba(255,255,255,0.25); color: var(--text); }
+.btn:hover { transform: translateY(-2px); }
+.btn.ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* --- Intro image card for Asmarina --- */
+/* --- Intro image card for Asmarina --- */
+.intro {
+  max-width: 1200px;
+  margin: -28px auto 24px;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.intro-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(197,157,95,.35);
+  box-shadow: var(--shadow);
+  background: #0f0f0f;
+}
+
+/* ✅ FULL IMAGE — keeps entire photo visible */
+.intro-card img {
+  width: 100%;
+  height: auto;               /* let it scale naturally */
+  max-height: 90vh;           /* prevent image from overflowing viewport */
+  object-fit: contain;        /* show full image, no cropping */
+  display: block;
+  filter: brightness(.98) contrast(1.05);
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+.intro-card:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.05) contrast(1.1);
+}
+
+.intro-caption {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  right: 20px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65));
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(3px);
+  text-align: left;
+}
+
+.intro-caption h2 {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 3.5vw, 34px);
+  color: var(--gold);
+}
+
+.intro-caption p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: clamp(15px, 2vw, 18px);
+}
+
+.intro-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* About preview */
+.about {
+  padding: 34px 24px 8px;
+  display: grid;
+  place-items: center;
+}
+.about-card {
+  max-width: 900px;
+  background: linear-gradient(180deg, #191919, #141414);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.about-card h2 { margin: 0 0 8px; }
+.about-card p { color: var(--muted); margin: 0 0 10px; }
+.about-card .link { color: var(--gold); }
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 24px;
+}
+.footer .grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.footer h4 { margin: 0 0 6px; }
+.footer p { margin: 0; color: var(--muted); }
+.footer a:hover { color: var(--gold); }
+.copyright {
+  text-align: center;
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer .grid { grid-template-columns: 1fr; text-align: center; }
+  .intro-card img { height: 340px; }
+  .intro-caption { left: 16px; right: 16px; bottom: 12px; padding: 14px; }
+}
+@media (max-width: 640px) {
+  .hero { min-height: 64vh; }
+  .intro-card img { height: 300px; }
+  .intro-caption { text-align: center; }
+  .intro-caption h2 { font-size: 22px; }
+  .intro-actions { justify-content: center; }
+}

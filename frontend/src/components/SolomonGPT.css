@@ -1,0 +1,211 @@
+:root {
+  --bg: #111;
+  --text: #fff;
+  --muted: #c7c7c7;
+  --gold: #c59d5f;
+  --card: #1a1a1a;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sgpt-wrap {
+  padding: 18px;
+  display: grid;
+  place-items: center;
+}
+
+.sgpt-card {
+  width: min(920px, 96vw);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sgpt-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #191919, #151515);
+}
+
+.sgpt-head h3 {
+  margin: 0;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.sgpt-head .muted {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.sgpt-head .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197, 157, 95, 0.18);
+}
+
+.sgpt-body {
+  height: 48vh;
+  min-height: 320px;
+  max-height: 62vh;
+  overflow: auto;
+  padding: 14px 12px;
+  background: radial-gradient(1200px 480px at 0% 0%, #121212, #0e0e0e);
+}
+
+.msg {
+  display: flex;
+  margin: 10px 6px;
+}
+.msg.bot {
+  justify-content: flex-start;
+}
+.msg.me {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 76ch;
+  line-height: 1.45;
+  padding: 10px 12px;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.bot .bubble {
+  background: #171717;
+  color: #fff;
+}
+.me .bubble {
+  background: #0f0f0f;
+  color: #fff;
+  border-color: rgba(197, 157, 95, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(197, 157, 95, 0.15);
+}
+
+.typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dotty {
+  width: 32px;
+  height: 12px;
+  display: inline-block;
+  position: relative;
+}
+.dotty::before,
+.dotty::after,
+.dotty span {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  opacity: 0.9;
+  animation: blink 1.2s infinite ease-in-out;
+}
+.dotty::before {
+  left: 0;
+  animation-delay: 0s;
+}
+.dotty span {
+  left: 12px;
+  animation-delay: 0.15s;
+}
+.dotty::after {
+  left: 24px;
+  animation-delay: 0.3s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  40% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  background: #131313;
+}
+
+.chip {
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  background: #0f0f0f;
+}
+.chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.sgpt-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  background: #121212;
+}
+
+.sgpt-input textarea {
+  flex: 1;
+  resize: none;
+  max-height: 120px;
+  min-height: 40px;
+  padding: 10px 12px;
+  color: #fff;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  outline: none;
+}
+.sgpt-input textarea:focus {
+  border-color: rgba(197, 157, 95, 0.45);
+  box-shadow: 0 0 0 2px rgba(197, 157, 95, 0.12) inset;
+}
+
+.send {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--gold);
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+}
+.send:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .sgpt-body {
+    height: 52vh;
+  }
+}

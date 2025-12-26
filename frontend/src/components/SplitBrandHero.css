@@ -1,0 +1,41 @@
+:root {
+  --gold:#d4af37;
+  --ink:#f5f5f5;
+  --muted:#c9c9c9;
+  --card:#141414;
+  --shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+/* Split Layout */
+.splitbrand {
+  display:grid;
+  grid-template-columns:84px 1fr;
+  min-height:340px;
+  background:var(--card);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  margin:28px auto 32px;
+}
+
+/* LEFT GOLD BAR */
+.sb-left {
+  background:linear-gradient(180deg,#e7c55b,var(--gold));
+  display:flex; align-items:center; justify-content:center;
+}
+.sb-vertical { writing-mode:vertical-rl; transform:rotate(180deg); letter-spacing:.1em; }
+.sb-title { color:#231f10; font-weight:700; text-transform:uppercase; font-size:18px; }
+
+/* RIGHT CONTENT */
+.sb-right { padding:42px 48px; color:var(--ink); display:flex; flex-direction:column; justify-content:center; gap:14px; }
+.sb-right-title { font-size:clamp(28px,4vw,40px); margin:0; }
+.sb-right-sub { color:var(--muted); margin:4px 0 18px; line-height:1.5; }
+.sb-cta { display:flex; gap:12px; flex-wrap:wrap; }
+.sb-btn { padding:12px 18px; border-radius:12px; background:var(--gold); color:#231f10; font-weight:600; text-decoration:none; box-shadow:var(--shadow); }
+.sb-btn.ghost { background:transparent; color:var(--ink); border:1px solid #2c2c2c; }
+
+/* Mobile */
+@media (max-width:720px){
+  .splitbrand{ grid-template-columns:64px 1fr; }
+  .sb-right{ padding:28px; }
+}

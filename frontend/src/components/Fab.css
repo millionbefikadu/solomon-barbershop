@@ -1,0 +1,14 @@
+.fab {
+  position: fixed; right: 18px; bottom: 18px; z-index: 80;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.fab-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 700;
+  box-shadow: 0 10px 26px rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.15);
+  color: #111; background: #c59d5f; transition: transform .15s ease, filter .2s ease;
+}
+.fab-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.fab-btn.wa { background: #25D366; color:#111; }   /* WhatsApp green */
+.fab-btn.call { background: #c59d5f; }
+@media (max-width: 480px){ .fab-btn { width: 52px; height: 52px; } }

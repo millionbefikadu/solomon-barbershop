@@ -62,12 +62,12 @@ export default function Home() {
           <h2>Asmarina Beauty Lab</h2>
           <p>Women’s hair & beauty — elegance, color, and care.</p>
           <div className="asmara-actions">
-            <a className="btn primary" href="/gallery">
+          <Link className="btn primary" href="/gallery">
               View Gallery
-            </a>
-            <a className="btn ghost" href="/services">
-              See Services
-            </a>
+           </Link>
+             <Link className="btn ghost" to="/services">
+              View Services
+            </Link>
           </div>
         </div>
       </section>
